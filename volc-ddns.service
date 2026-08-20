@@ -1,0 +1,21 @@
+[Unit]
+Description=Volcengine DDNS Updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/volcengine-dns-toolkit/dns_manager.py ddns --zone cyberstroll.top,cyberstroll.cn
+WorkingDirectory=/opt/volcengine-dns-toolkit
+EnvironmentFile=/etc/volcengine-dns.env  # Path to credentials file (chmod 600)
+# Or use environment variables directly:
+# Environment="VOLC_ACCESS_KEY_ID=your-key"
+# Environment="VOLC_SECRET_ACCESS_KEY=your-secret"
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=true
+ReadWritePaths=/tmp
+
+[Install]
+WantedBy=multi-user.target
