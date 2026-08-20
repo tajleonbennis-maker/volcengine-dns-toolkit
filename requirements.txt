@@ -1,0 +1,10 @@
+# Volcengine DNS Toolkit - Dependencies
+
+# Volcengine Official SDK
+volcengine-python-sdk>=1.0.0
+
+# HTTP Requests (dependency of SDK)
+requests>=2.28.0
+
+# Optional: For .env file loading (if not using manual parsing)
+python-dotenv>=1.0.0
